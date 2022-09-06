@@ -1,2 +1,12 @@
 hk33_ac="hanghang98089996@gmail.com"
 hk33_pw="qwer1234!"
+racedate_link="https://horse.hk33.com/race-results/"
+chin_char=f"[\u4e00-\u9fa5]"
+court_map={"田":"ST","谷":"HV"}
+race_year=["2021/2022",
+"2020/2021",
+"2019/2020",
+"2018/2019",
+"2017/2018",
+"2016/2017",
+"2015/2016"]
