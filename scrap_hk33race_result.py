@@ -4,7 +4,13 @@ import requests
 import re
 import datetime as dt
 import pandas as pd
-def make_soup(url):
+def horseracec33_soup(url):
+    """
+    Cookie for horserace33
+
+    :param url: horserace33 url in parameter.py
+    :return: bs4 obj
+    """
     cookies = {
         'PHPSESSID': 'hjq4k3mump97adqb7he7p3jvq3',
         'lang': 'zh-hant',
@@ -34,7 +40,7 @@ def make_soup(url):
     soup=BeautifulSoup(resoponse.text,"html.parser")
     return soup
 def race_date_catch(year):
-    soup = make_soup(racedate_link+year)
+    soup = horseracec33_soup(racedate_link + year)
     tr = soup.find("table", {"class": "ta_c mb_m mlr_a"})
     tr = tr.find_all("tr")
     racedate_list = []
@@ -61,6 +67,11 @@ def get_all_race_info():
         all_racedate_list.append(race_date_catch(y))
     all_racedate_list = [val for sublist in all_racedate_list for val in sublist]
     df = pd.DataFrame(all_racedate_list, columns=["date", "num_of_match", "court", "track", "season"])
+    print(df)
     df.to_csv("./output/all_racedate_info.csv", index=False)
+
+def get_single_day_result(date,num_match):
+    url=f"https://horse.hk33.com/race-results/{str(date)}/{num_match}"
 if __name__ == '__main__':
+    get_all_race_info()
     pass
