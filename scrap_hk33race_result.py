@@ -67,7 +67,7 @@ def get_all_race_info():
         all_racedate_list.append(race_date_catch(y))
     all_racedate_list = [val for sublist in all_racedate_list for val in sublist]
     df = pd.DataFrame(all_racedate_list, columns=["date", "num_of_match", "court", "track", "season"])
-    print(df)
+    # print(df)
     df.to_csv("./output/all_racedate_info.csv", index=False)
 
 def get_single_day_result(date,num_match):
